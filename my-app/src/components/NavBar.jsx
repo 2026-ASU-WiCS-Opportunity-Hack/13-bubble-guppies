@@ -2,7 +2,7 @@ import {Squash as Hamburger} from 'hamburger-react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Plus } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 // CSS
 import './NavBar.css';
@@ -28,9 +28,14 @@ function NavBar() {
 
         {/* sidebar shows if isOpen = true*/}
         {/* onClick -> close the hamburger */}
-
+        <AnimatePresence>
         {isOpen && (
-          <nav className="sidebar">
+          <motion.div 
+            className="sidebar"
+            initial= {{x:-240}}
+            animate={{x:0}}
+            exit={{x:-240}}
+            transition={{duration: 0.5}}>
             <ul>
               <li>
                 <NavLink to="/dashboard" onClick={() => setIsOpen(false)}>Home</NavLink>
@@ -48,8 +53,9 @@ function NavBar() {
                 <NavLink to="/appointment/new" onClick={() => setIsOpen(false)}>Create Event</NavLink>
               </li>
             </ul>
-          </nav>
+          </motion.div>
         )}
+        </AnimatePresence>
       </div>
       {/* RIGHT BUTTON */ }
       <NavLink to="/client/new">
