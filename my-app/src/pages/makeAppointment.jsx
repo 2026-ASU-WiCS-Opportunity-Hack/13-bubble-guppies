@@ -15,8 +15,8 @@ function MakeAppointment() {
             transition={{duration:0.5}}
             >   
                 <NavBar></NavBar>
-                <h1>make an appointment</h1>
-                <p>test test test</p>
+                <h1>Make An Appointment</h1>
+                <p>TBD</p>
             </motion.div>
             </div>
         </div>

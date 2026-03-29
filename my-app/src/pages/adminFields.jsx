@@ -9,8 +9,8 @@ function AdminFields() {
     return(
         <div className="adminFields">
             <NavBar></NavBar>
-            <h2>admin fields</h2>
-            <p>test test test</p>
+            <h1>Admin Fields</h1>
+            <p>TBD</p>
         </div>
     )
 }

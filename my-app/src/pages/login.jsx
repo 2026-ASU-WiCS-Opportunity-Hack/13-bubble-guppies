@@ -15,7 +15,7 @@ export default function Login() {
     const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-            redirectTo: `${window.location.origin}/dashboard`// where to go after login
+            redirectTo: "https://13-bubble-guppies.vercel.app/dashboard"
         }
         });
         if (error) console.error(error);

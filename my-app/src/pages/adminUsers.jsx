@@ -9,8 +9,8 @@ function AdminUsers() {
     return(
         <div className="adminUsers">
             <NavBar></NavBar>
-            <h2>admin users page</h2>
-            <p>test test test</p>
+            <h1>Admin Users Page</h1>
+            <p>TBD</p>
         </div>
     )
 }

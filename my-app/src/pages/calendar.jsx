@@ -14,8 +14,8 @@ function Calendar() {
             transition={{duration:0.5}}
             >   
                 <NavBar></NavBar>
-                <h1>calendar</h1>
-                <p>test test test</p>
+                <h1>Calendar</h1>
+                <p>TBD</p>
             </motion.div>
         </div>
     )

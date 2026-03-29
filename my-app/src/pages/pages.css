@@ -56,3 +56,8 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.calendar p, .makeAppointment p, .adminFields p, .adminUsers p {
+    color: var(--accent);
+    font-size: 24px;
+}

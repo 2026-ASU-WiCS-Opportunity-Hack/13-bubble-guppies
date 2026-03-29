@@ -111,6 +111,7 @@
     top: 15px;
     right: 25px;
     cursor: pointer;
+    background-color: var(--accent);
     
     /* transition: transform 0.3s ease, background-color 0.2s ease; */
 }
