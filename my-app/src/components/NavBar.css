@@ -1,45 +1,11 @@
-/*
-.navBar {
-    position: fixed;
-   
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
-    background-color: white;
-    z-index: 100;
-    
-}
-
 .search-container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: center;
-}*/
-
-.search-results {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);  /* ← centers it under the input */
-  width: 250px;
-  background-color: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-.search-results {
-  position: absolute;
-  top: 100%;
-  width: 250px;
-  background-color: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    max-width: calc(100vw - 24px);
+    z-index: 1000;
 }
 
 .search-input::-webkit-search-cancel-button {
@@ -47,21 +13,47 @@
 }
 
 .search-input {
-    position: fixed;
+        position: relative;
     border-radius: 5px;
     border: 0px;
     background-color: rgba(117, 91, 168, 0.635);
     color: black;
     font-weight: bold;
-    font-size: 20px;
+        font-size: 18px;
     text-align: center;
-    
-    width: 400px;
+
+        width: 100%;
     height: 40px;
-    top: 20px;
-    left: 50%;              
-    transform: translateX(-50%);
-    
+        box-sizing: border-box;
+        outline: none;
+}
+
+.search-results {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.search-result-item {
+    padding: 10px 12px;
+    color: black;
+}
+
+.search-result-item + .search-result-item {
+    border-top: 1px solid #f0f0f0;
+}
+
+.search-result-empty {
+    padding: 10px 12px;
+    color: #555;
 }
 
 
