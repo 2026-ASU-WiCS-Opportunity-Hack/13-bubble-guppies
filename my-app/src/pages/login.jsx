@@ -1,7 +1,7 @@
 import NavBar from '../components/NavBar.jsx';
 import { useState } from "react";
 import { supabase } from "../supabaseClient";
-import Popup from './popup';
+import Popup from '../components/Popup.jsx';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
