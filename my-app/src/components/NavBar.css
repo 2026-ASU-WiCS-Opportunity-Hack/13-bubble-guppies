@@ -21,7 +21,7 @@
     border-radius: 5px;
     border: 0px;
     background-color: rgba(117, 91, 168, 0.635);
-    color: black;
+    color: #110614;
     font-weight: bold;
         font-size: 18px;
     text-align: center;
@@ -30,7 +30,17 @@
     height: 40px;
         box-sizing: border-box;
         outline: none;
+
+    transition: transform 0.2s ease-in-out;
 }
+
+.search-input:hover {
+    background-color: rgba(64, 34, 128, 0.538);
+}
+.search-input::-webkit-search-cancel-button {
+    filter: invert(1);  /* makes it black or white depending on original */
+}
+
 
 .search-results {
     position: absolute;
