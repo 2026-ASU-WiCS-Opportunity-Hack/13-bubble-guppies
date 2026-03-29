@@ -24,7 +24,7 @@ function NavBar() {
       async function getAllClients() {
           const {data, error} = await supabase
           .from('clients')
-          .select('first_name, last_name')
+          .select('client_id, first_name, last_name')
           .or(`first_name.ilike.%${search}%,last_name.ilike.%${search}%`)
           .limit(8);
 
