@@ -1,35 +1,37 @@
-    import { supabase } from "../supabaseClient";
-    import { useEffect, useState } from "react";
-    import { useAuth } from '../context/AuthContext';
-    import { useNavigate } from 'react-router-dom';
 
-    /* object / animation imports */
-    import NavBar from '../components/NavBar';
-    import { motion } from 'framer-motion'
-    import Card from '../components/Card';
-    import './pages.css';
+import { supabase } from "../supabaseClient";
+import { useEffect, useState } from "react";
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-    function MakeClient() {
-        const { user } = useAuth();
+/* object / animation imports */
+import NavBar from '../components/NavBar';
+import { motion } from 'framer-motion'
+import Card from '../components/Card';
+import './pages.css';
 
-        const [formData, setFormData] = useState({
-            first_name: '',
-            last_name: '',
-            email: '',
-            phone: '',
-            date_of_birth: '',
-            address: '',
-            city: '',
-            state: '',
-            zip_code: '',
-            gender: '',
-            ethnicity: '',
-            primary_language: '',
-            priority: '',
-            case_manager: '',
-            cm_id: user.id,
-            notes: ''
-        });
+
+function MakeClient() {
+    const { user } = useAuth();
+
+    const [formData, setFormData] = useState({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        date_of_birth: '',
+        address: '',
+        city: '',
+        state: '',
+        zip_code: '',
+        gender: '',
+        ethnicity: '',
+        primary_language: '',
+        priority: '',
+        case_manager: '',
+        cm_id: user.id,
+        notes: ''
+    });
 
         const [users, setUsers] = useState([]);
         const [loading, setLoading] = useState(false);
@@ -276,6 +278,5 @@
             </div>
         );
     }
-
 
     export default MakeClient
