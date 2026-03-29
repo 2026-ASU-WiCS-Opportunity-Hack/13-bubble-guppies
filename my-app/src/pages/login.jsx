@@ -9,7 +9,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isPopupVisible, setIsPopupVisible] = useState(false);
-    
+    const navigate = useNavigate() 
     
     async function handleLogin(e) {
         console.log("Email:", email);
@@ -25,6 +25,7 @@ export default function Login() {
             setIsPopupVisible(!isPopupVisible);
         } else {
             console.log('Logged In: ', data);
+            navigate('/dashboard');
             setIsPopupVisible(false);
 
         }
