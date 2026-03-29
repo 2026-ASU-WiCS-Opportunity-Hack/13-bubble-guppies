@@ -7,18 +7,18 @@
 .submit button {
     border-radius: 15px;
     border: none;
-    color: #ffffff;
+    color: var(--bg);
     font-size: 16px;
     font-weight: bold;
     padding: 25px 40px;
-    background-color: #7066b1;
+    background-color: var(--accent);
     transition: transform 0.2s ease-in-out;
     
     margin-bottom: 20px;
 }
 
 .submit button:hover {
-    background-color: #554b99;
+    background-color: var(--text-h);
 }
 
 /* ALL CLIENTS PAGE - table */
@@ -31,8 +31,8 @@
 }
 
 .allClients thead tr {
-    background-color: #009879;
-    color: #FFFFFF;
+    background-color: var(--accent);
+    color: var(--bg);
     text-align: left;
     font-weight: bold;
 }
@@ -47,12 +47,12 @@
 }
 
 .allClients tbody tr {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid var(--border);
     transition: transform 0.2s ease-in-out;
 }
 
 .allClients tbody tr:hover {
-    background-color: rgba(227, 226, 226, 0.4);
+    background-color: var(--accent-bg);
     font-weight: bold;
     cursor: pointer;
 }

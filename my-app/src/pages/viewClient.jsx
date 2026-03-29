@@ -7,9 +7,10 @@
     import { easeInOut, motion } from 'framer-motion'
 
     function getPriorityColor(priority) {
-        if (priority === 'High') return '#e74c3c';
-        if (priority === 'Medium') return '#f39c12';
-        if (priority === 'Low') return '#2ecc71';
+        if (priority === 'High') return 'var(--priority-high)';
+        if (priority === 'Medium') return 'var(--priority-medium)';
+        if (priority === 'Low') return 'var(--priority-low)';
+        return 'var(--accent-bg)';
     }
 
     function ViewClient() {
@@ -55,7 +56,7 @@
                 </motion.button>
 
                 <h1>{client.first_name} {client.last_name}</h1>
-                <h3><span style={{backgroundColor: `${getPriorityColor(client.priority)}`, borderRadius: `15px`, padding: `5px 20px`, color:`#FFFFFF`}}>{client.priority}</span></h3>
+                <h3><span style={{backgroundColor: `${getPriorityColor(client.priority)}`, borderRadius: `15px`, padding: `5px 20px`, color:'var(--on-priority)'}}>{client.priority}</span></h3>
                 <Card title="Demographics" className="cols-2">
                     <p><span className="label">Email:</span><span className="value">{client.email || 'N/A'}</span></p>
                     <p><span className="label">Phone:</span><span className="value">{client.phone || 'N/A'}</span></p>

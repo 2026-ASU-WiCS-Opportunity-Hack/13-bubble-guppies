@@ -6,9 +6,10 @@ import { motion } from 'framer-motion'
 
 /* METHOD for COLORED priority */ 
 function getPriorityColor(priority) {
-    if (priority === 'High') return '#e74c3c';
-    if (priority === 'Medium') return '#f39c12';
-    if (priority === 'Low') return '#2ecc71';
+    if (priority === 'High') return 'var(--priority-high)';
+    if (priority === 'Medium') return 'var(--priority-medium)';
+    if (priority === 'Low') return 'var(--priority-low)';
+    return 'var(--accent-bg)';
 }
 
 function AllClients() {

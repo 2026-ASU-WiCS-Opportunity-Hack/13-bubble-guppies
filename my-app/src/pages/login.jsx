@@ -45,7 +45,7 @@ export default function Login() {
 
     return (
         <div className="login-container">
-                <HeartHandshake size={48} color= "rgba(117, 91, 168, 0.635)" />
+            <HeartHandshake size={48} color="var(--accent)" />
             <h2>Login</h2>
             <form onSubmit={handleLogin}>
                 <div className="form-group">
