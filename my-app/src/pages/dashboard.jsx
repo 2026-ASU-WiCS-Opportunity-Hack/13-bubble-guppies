@@ -2,6 +2,7 @@ import { supabase } from "../supabaseClient";
 import { useState, useEffect } from "react";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../components/NavBar';
 
 function Dashboard() {
     const [clients, setClients] = useState([])
@@ -28,6 +29,7 @@ function Dashboard() {
     
     return(
     <div className="container">
+        <NavBar></NavBar>
         <h1>Welcome to Your Dashboard!</h1>
         <div className="services-container">
             <div className="box">
