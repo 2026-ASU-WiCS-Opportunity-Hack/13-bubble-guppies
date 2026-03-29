@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
     return(
-    <div className="dashboard">
+    <div className="container">
         <h1>this is the dashboard</h1>
         <p>test test test</p>
     </div>
