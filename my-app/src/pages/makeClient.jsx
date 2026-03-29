@@ -105,6 +105,7 @@ function MakeClient() {
                     animate={{opacity:1}}
                     transition={{duration:0.5}}
                 >
+                <NavBar></NavBar>
                 <h2>Register New Client</h2>
                 <form onSubmit={handleSubmit}>
                     {/* PERSONAL INFO CARD */ } 
@@ -273,7 +274,7 @@ function MakeClient() {
                     {success && <p>Client registered successfully!</p>}
                     {error && <p>Error: {error}</p>}
                 </form>
-                <NavBar></NavBar>
+                
             </motion.div>
             </div>
         );

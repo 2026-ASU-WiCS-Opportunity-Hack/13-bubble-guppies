@@ -72,5 +72,10 @@
     color: #333;
 }
 
+/* calendar color to black on date input */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
 
 
