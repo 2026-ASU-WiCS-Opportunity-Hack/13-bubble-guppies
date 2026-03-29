@@ -1,3 +1,5 @@
+import NavBar from '../components/NavBar.jsx';
+
 export default function Login() {
     const handleLogin = (event) => {
         event.preventDefault();

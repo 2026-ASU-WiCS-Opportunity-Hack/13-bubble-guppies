@@ -1,0 +1,22 @@
+.left_hamburger {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+}
+
+.sidebar {
+    position: fixed;
+    
+}
+
+.sidebar ul {
+    list-style: none;
+    color: black;
+    
+    
+}
+
+.sidebar a:hover {
+    color: #241155;
+}
