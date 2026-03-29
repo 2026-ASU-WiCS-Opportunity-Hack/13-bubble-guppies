@@ -9,6 +9,9 @@
 }
 */
 
+.search-input:hover {
+    background-color: rgba(73, 55, 111, 0.538);
+}
 .search-input::-webkit-search-cancel-button {
     filter: invert(1);  /* makes it black or white depending on original */
 }
@@ -57,9 +60,6 @@
     color: #555;
 }
 
-
-
-
 /* HAMBURGER */
 
 .left_hamburger {
@@ -74,13 +74,45 @@
     
 }
 
-.sidebar ul {
+.sidebar li {
+    margin-bottom: 8px;
+}
+.sidebar ul {   
+    text-align: left;
     list-style: none;
-    color: black;
-    
-    
 }
 
 .sidebar a:hover {
     color: #241155;
 }
+
+.sidebar a.active {
+    color: rgb(41, 2, 53);
+    font-weight: bold;
+}
+
+/* BUTTON */
+.right_button {
+    position: fixed;
+    border: none;
+    border-radius: 25%;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+    
+    /* transition: transform 0.3s ease, background-color 0.2s ease; */
+}
+
+/* add this to your NavBar.css */
+.right_button svg {
+    transition: transform 0.5s ease;
+    transform-origin: center center;
+    display: block;
+    
+}
+
+.right_button:hover svg {
+    transform: rotate(360deg);
+    
+}
+
