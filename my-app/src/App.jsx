@@ -1,5 +1,6 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 import Login from './pages/login.jsx';
 import Dashboard from './pages/dashboard.jsx';
 import AdminFields from './pages/adminFields.jsx';
@@ -19,14 +20,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} /> 
-          <Route path="/admin/fields" element={<AdminFields />} />
-          <Route path="/admin/users" element={<AdminUsers />} /> 
-          <Route path="/appointment/new" element={<MakeAppointment/>} />
-          <Route path="/calendar" element={<Calendar/>} />
-          <Route path="/client/new" element={<MakeClient/>} />
-          <Route path="/client/view" element={<ViewClient/>} />
-          <Route path="/client/all" element={<AllClients/>} />
+          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/admin/fields" element={<ProtectedRoute><AdminFields /></ProtectedRoute>} />
+          <Route path="/admin/users" element={<ProtectedRoute><AdminUsers /></ProtectedRoute>} />
+          <Route path="/appointment/new" element={<ProtectedRoute><MakeAppointment /></ProtectedRoute>} />
+          <Route path="/calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
+          <Route path="/client/new" element={<ProtectedRoute><MakeClient /></ProtectedRoute>} />
+          <Route path="/client/view" element={<ProtectedRoute><ViewClient /></ProtectedRoute>} />
+          <Route path="/client/all" element={<ProtectedRoute><AllClients /></ProtectedRoute>} />
         </Routes>
       </main>
     </Router>
