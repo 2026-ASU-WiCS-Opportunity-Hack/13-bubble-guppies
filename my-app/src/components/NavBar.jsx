@@ -5,40 +5,60 @@ import { supabase } from "../supabaseClient";
 import SearchResultsList from './SearchResultsList';
 import { Plus } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useAuth } from '../context/AuthContext';
 
 // CSS
 import './NavBar.css';
 
 function NavBar() {
+  const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState("")
   const [clients, setClients] = useState([])
   const [isResultsVisible, setIsResultsVisible] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  useEffect(() =>{
-      if (!search.trim()) {
-          setClients([]);
-          return;
-      }
+useEffect(() => {
+  
 
-      async function getAllClients() {
-          const {data, error} = await supabase
-          .from('clients')
-          .select('client_id, first_name, last_name')
-          .or(`first_name.ilike.%${search}%,last_name.ilike.%${search}%`)
-          .limit(8);
+  async function getRole() {
+    const { data, error } = await supabase
+      .from('users')
+      .select('role')
+      .eq('email', user.email)  // make sure your column is named 'id' not 'user_id'
+    console.log(data);
+    if (error) console.log(error);
+    else {
+      setIsAdmin(data[0].role=== 'Admin');
+    }
+  }
 
-          if(error) {
-              console.log(error)
-          }
-          else {
-              setClients(data ?? []);
-          }
+  getRole();
+}, [user]);
 
-      }
+useEffect(() => {
+  if (!search.trim()) {
+    setClients([]);
+    return;
+  }
 
-      getAllClients();
-  }, [search])
+  async function getAllClients() {
+    const { data, error } = await supabase
+      .from('clients')
+      .select('client_id, first_name, last_name')
+      .or(`first_name.ilike.%${search}%,last_name.ilike.%${search}%`)
+      .limit(8);
+
+    if (error) console.log(error);
+    else setClients(data ?? []);
+  }
+
+  getAllClients();
+}, [search]);
+
+
+
+
 
   return (
     <div className ="navBar">
@@ -93,6 +113,17 @@ function NavBar() {
               <li>
                 <NavLink to="/appointment/new" onClick={() => setIsOpen(false)}>Create Event</NavLink>
               </li>
+              {isAdmin && 
+                <li>
+                  <NavLink to="/admin/fields" onClick={() => setIsOpen(false)}>Edit Fields</NavLink>
+                </li>
+              }
+              {isAdmin && 
+                <li>
+                  <NavLink to="/admin/users" onClick={() => setIsOpen(false)}>Manage Users</NavLink>
+                </li>
+                }
+
             </ul>
           </motion.div>
         )}
