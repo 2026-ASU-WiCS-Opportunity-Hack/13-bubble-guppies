@@ -93,7 +93,6 @@ function MakeClient() {
 
     return(
         <div className="makeClient">
-<<<<<<< HEAD
             <h2>Register New Client</h2>
             <form onSubmit={handleSubmit}>
                 <input
@@ -229,11 +228,6 @@ function MakeClient() {
                 {success && <p>Client registered successfully!</p>}
                 {error && <p>Error: {error}</p>}
             </form>
-=======
-            <NavBar></NavBar>
-            <h1>add a client</h1>
-            <p>test test test</p>
->>>>>>> bee5d97205e382ab691a3d2baba076f0bd1ee564
         </div>
     );
 }
