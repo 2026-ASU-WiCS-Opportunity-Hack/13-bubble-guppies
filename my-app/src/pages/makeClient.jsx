@@ -2,12 +2,14 @@ import { supabase } from "../supabaseClient";
 import { useEffect, useState } from "react";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+
+/* object / animation imports */
 import NavBar from '../components/NavBar';
 import { motion } from 'framer-motion'
 import './pages.css';
 
 function MakeClient() {
-    const { user } = user.user_id;
+    const { user } = useAuth();
 
     const [formData, setFormData] = useState({
         first_name: '',
@@ -95,25 +97,14 @@ function MakeClient() {
 
     return(
         <div className="makeClient">
+            <motion.div
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                transition={{duration:0.5}}
+            >
             <h2>Register New Client</h2>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="first_name"
-                    value={formData.first_name}
-                    onChange={handleChange}
-                    placeholder="First Name"
-                    required
-                />
-
-                <input
-                    type="text"
-                    name="last_name"
-                    value={formData.last_name}
-                    onChange={handleChange}
-                    placeholder="Last Name"
-                    required
-                />
+                {/* PERSONAL INFO CARD */ } 
 
                 <input
                     type="email"
@@ -231,6 +222,7 @@ function MakeClient() {
                 {error && <p>Error: {error}</p>}
             </form>
             <NavBar></NavBar>
+          </motion.div>
         </div>
     );
 }
