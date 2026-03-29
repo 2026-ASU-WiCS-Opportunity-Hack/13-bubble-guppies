@@ -1,4 +1,3 @@
-import NavBar from '../components/NavBar.jsx';
 import { useState } from "react";
 import { supabase } from "../supabaseClient";
 import Popup from './popup';
@@ -6,12 +5,14 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+    const navigate = useNavigate()  // add this inside your component
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isPopupVisible, setIsPopupVisible] = useState(false);
     
     
     async function handleLogin(e) {
+        
         console.log("Email:", email);
         console.log("Password: ", password)
         e.preventDefault();
@@ -25,6 +26,7 @@ export default function Login() {
             setIsPopupVisible(!isPopupVisible);
         } else {
             console.log('Logged In: ', data);
+            navigate('/dashboard');
             setIsPopupVisible(false);
 
         }

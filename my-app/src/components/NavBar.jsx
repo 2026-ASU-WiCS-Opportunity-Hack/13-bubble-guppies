@@ -2,6 +2,7 @@ import {Squash as Hamburger} from 'hamburger-react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
+
 // CSS
 import './NavBar.css';
 
