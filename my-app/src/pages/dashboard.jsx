@@ -26,6 +26,7 @@ function Dashboard() {
               <div className="box">
                 <p>Upcoming Appointments</p>
               </div>
+            </div>
           </motion.div>
     </div>
     )
