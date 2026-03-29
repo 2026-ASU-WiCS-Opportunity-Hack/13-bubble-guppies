@@ -26,7 +26,7 @@ function App() {
           <Route path="/appointment/new" element={<ProtectedRoute><MakeAppointment /></ProtectedRoute>} />
           <Route path="/calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
           <Route path="/client/new" element={<ProtectedRoute><MakeClient /></ProtectedRoute>} />
-          <Route path="/client/view" element={<ProtectedRoute><ViewClient /></ProtectedRoute>} />
+          <Route path="/client/view/:id" element={<ProtectedRoute><ViewClient /></ProtectedRoute>} />
           <Route path="/client/all" element={<ProtectedRoute><AllClients /></ProtectedRoute>} />
         </Routes>
       </main>
