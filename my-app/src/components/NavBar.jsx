@@ -46,10 +46,11 @@ function NavBar() {
             className="search-input"
             />
         </div>
-        <div className="search-results">
           {isResultsVisible && (
-            <SearchResultsList results={clients}></SearchResultsList>)}
-        </div>
+            <div className="search-results">
+              <SearchResultsList results={clients} />
+            </div>
+          )}
       </div>
       <div className="left_hamburger">
         {/* hamburger itself */}
