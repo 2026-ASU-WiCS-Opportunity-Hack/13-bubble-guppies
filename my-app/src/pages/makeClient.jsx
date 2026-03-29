@@ -106,7 +106,7 @@ function MakeClient() {
                     transition={{duration:0.5}}
                 >
                 <NavBar></NavBar>
-                <h2>Register New Client</h2>
+                <h1>Register New Client</h1>
                 <form onSubmit={handleSubmit}>
                     {/* PERSONAL INFO CARD */ } 
                     <Card title="Personal Information" className="cols-2">

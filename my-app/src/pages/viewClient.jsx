@@ -3,8 +3,14 @@
     import { useNavigate, useParams } from 'react-router-dom';
     import { ArrowLeft } from 'lucide-react';
     import NavBar from '../components/NavBar';
-    import { motion } from 'framer-motion'
+    import Card from '../components/Card'; 
+    import { easeInOut, motion } from 'framer-motion'
 
+    function getPriorityColor(priority) {
+        if (priority === 'High') return '#e74c3c';
+        if (priority === 'Medium') return '#f39c12';
+        if (priority === 'Low') return '#2ecc71';
+    }
 
     function ViewClient() {
         const { id } = useParams();
@@ -33,31 +39,37 @@
 
         return(
             <div className="viewClient">
+                <motion.div
+                    initial={{opacity:0}}
+                    animate={{opacity:1}}
+                    transition={{duration:0.5}}
+                >
                 <NavBar></NavBar>
 
-                <button onClick={() => navigate('/client/all')} style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+                <motion.button onClick={() => navigate('/client/all')} style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', borderRadius:'5px', border: 'none', padding: '5px 10px'}}
+                    whileHover={{scale:1.05}}
+                    transition={{duration:0.5, ease: easeInOut}}
+                    >
                     <ArrowLeft size={20} style={{ marginRight: '5px' }} />
                     Back
-                </button>
+                </motion.button>
 
                 <h1>{client.first_name} {client.last_name}</h1>
-                <h3>Priority: {client.priority}</h3>
-
-                <div className="Demographics">
-                    <h2>Demographics</h2>
-                    <p><strong>Email:</strong> {client.email}</p>
-                    <p><strong>Phone:</strong> {client.phone}</p>
-                    <p><strong>Address:</strong> {client.address}</p>
-                    <p><strong>DOB:</strong> {client.date_of_birth ? new Date(client.date_of_birth).toLocaleDateString() : 'N/A'}</p>
-                    <p><strong>Gender:</strong> {client.gender}</p>
-                    <p><strong>Language:</strong> {client.primary_language}</p>
-                </div>
-
-                <div className="Notes">
-                    <h2>Notes</h2>
-                    <p><strong>Case Manager:</strong> {client.case_manager}</p>
-                    <p><strong>Notes:</strong> {client.notes}</p>
-                </div>
+                <h3><span style={{backgroundColor: `${getPriorityColor(client.priority)}`, borderRadius: `15px`, padding: `5px 20px`, color:`#FFFFFF`}}>{client.priority}</span></h3>
+                <Card title="Demographics" className="cols-2">
+                    <p><span className="label">Email:</span><span className="value">{client.email || 'N/A'}</span></p>
+                    <p><span className="label">Phone:</span><span className="value">{client.phone || 'N/A'}</span></p>
+                    <p><span className="label">Address:</span><span className="value">{client.address || 'N/A'}</span></p>
+                    <p><span className="label">Date of Birth:</span><span className="value">{client.date_of_birth ? new Date(client.date_of_birth).toLocaleDateString() : 'N/A'}</span></p>
+                    <p><span className="label">Gender:</span><span className="value">{client.gender || 'N/A'}</span></p>
+                    <p><span className="label">Primary Language:</span><span className="value">{client.primary_language || 'N/A'}</span></p>
+                </Card>
+                
+                <Card title="Notes" className="cols-1">
+                    <p><span className="label">Case Manager:</span><span className="value">{client.case_manager || 'No Case Manager Assigned'}</span></p>
+                    <p id="notes"><span className="label">Notes:</span><span className="value">{client.notes || 'No Notes Written Yet'}</span></p>
+                </Card>
+                </motion.div>
             </div>
         )
     }
