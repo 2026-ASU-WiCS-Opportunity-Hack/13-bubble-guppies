@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { supabase } from "../supabaseClient";
+import Popup from './popup';
+
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+    
+    
     async function handleLogin(e) {
         console.log("Email:", email);
         console.log("Password: ", password)
@@ -15,8 +19,11 @@ export default function Login() {
         });
         if(error) {
             console.log('Error: ', error);
+            setIsPopupVisible(!isPopupVisible);
         } else {
             console.log('Logged In: ', data);
+            setIsPopupVisible(false);
+
         }
         console.log('Login form submitted');
     };
@@ -34,6 +41,12 @@ export default function Login() {
                     <input type="password" id="password" name="password" onChange={(e)=>setPassword(e.target.value)}required />
                 </div>
                 <button type="submit">Login</button>
+                {isPopupVisible && (
+        <div>
+          {/* This div is only rendered when isVisible is true */}
+          <p>The wrong email and password is not in the system!</p>
+        </div>
+      )}
             </form>
         </div>
     );
