@@ -44,11 +44,10 @@ export default function Login() {
                 </div>
                 <button type="submit">Login</button>
                 {isPopupVisible && (
-        <div>
-          {/* This div is only rendered when isVisible is true */}
-          <p>The wrong email and password is not in the system!</p>
-        </div>
-      )}
+                <div>
+                    <p>The wrong email and password is not in the system!</p>
+                </div>
+                )}
             </form>
         </div>
     );
