@@ -1,6 +1,6 @@
 .card {
     border-radius: 10px;
-    background-color: #7066b1;
+    background-color: var(--accent);
     padding: 2rem 1.5rem 2rem 1.5rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
@@ -8,7 +8,7 @@
 }
 
 .card:hover {
-     background-color: #554b99;
+    background-color: var(--text-h);
 }
 
 
@@ -17,7 +17,7 @@
     font-weight: bold;
     text-align: left;
     margin-bottom: 1.2rem;  
-    color: #f2f2f2;
+    color: var(--bg);
 } 
 
 .card-body {
@@ -70,8 +70,8 @@
 
 /* Background Color for Input */ 
 .card-body input, .card-body select, .card-body textarea {
-    background-color: rgba(255, 255, 255, 0.6);
-    color: #333;
+    background-color: var(--accent-bg);
+    color: var(--text);
 }
 
 /* calendar color to black on date input */
@@ -83,7 +83,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* 1) the p container */ 
 .viewClient .card p {
-    background-color: rgba(255,255,255,0.8);
+    background-color: var(--bg);
     border: none;
     border-radius: 5px;
     padding: 12px 15px;

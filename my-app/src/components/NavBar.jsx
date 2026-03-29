@@ -64,6 +64,7 @@ useEffect(() => {
     <div className ="navBar">
       {/* SEARCH BAR */ }
       <div className = "search-container">
+        <div className="search-text">
         <input
           type="search"
           placeholder="Search clients..."
@@ -76,6 +77,7 @@ useEffect(() => {
           }}
           className="search-input"
         />
+          </div>
 
         {isResultsVisible && search.trim() && (
           <div className="search-results">

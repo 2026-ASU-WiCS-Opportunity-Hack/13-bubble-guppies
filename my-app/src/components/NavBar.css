@@ -12,8 +12,8 @@
     position: relative;
     border-radius: 5px;
     border: 0px;
-    background-color: rgba(117, 91, 168, 0.635);
-    color: #110614;
+    background-color: var(--accent);
+    color: var(--accent-bg);
     font-weight: bold;
     font-size: 18px;
     text-align: center;
@@ -26,9 +26,19 @@
     transition: transform 0.2s ease-in-out;
 }
 
-.search-input:hover {
-    background-color: rgba(64, 34, 128, 0.538);
+.search-text {
+    color: #ffff;
 }
+
+.search-input:hover {
+    background-color: var(--border);
+}
+
+.search-input::placeholder {
+    color: var(--on-priority);
+    opacity: 1;
+}
+
 .search-input::-webkit-search-cancel-button {
     filter: invert(1);  /* makes it black or white depending on original */
 }
@@ -39,10 +49,10 @@
     top: calc(100% + 6px);
     left: 0;
     width: 100%;
-    background-color: white;
-    border: 1px solid #e0e0e0;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
     z-index: 1000;
     max-height: 280px;
     overflow-y: auto;
@@ -50,16 +60,16 @@
 
 .search-result-item {
     padding: 10px 12px;
-    color: black;
+    color: var(--text);
 }
 
 .search-result-item + .search-result-item {
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid var(--border);
 }
 
 .search-result-empty {
     padding: 10px 12px;
-    color: #555;
+    color: var(--text);
 }
 
 /* HAMBURGER */
@@ -85,11 +95,11 @@
 }
 
 .sidebar a:hover {
-    color: #241155;
+    color: var(--accent);
 }
 
 .sidebar a.active {
-    color: rgb(41, 2, 53);
+    color: var(--text-h);
     font-weight: bold;
 }
 
