@@ -9,8 +9,16 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isPopupVisible, setIsPopupVisible] = useState(false);
-    
-    
+    const signInWithGoogle = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+            redirectTo: `${window.location.origin}/dashboard`// where to go after login
+        }
+        });
+        if (error) console.error(error);
+        };
+
     async function handleLogin(e) {
         
         console.log("Email:", email);
@@ -51,6 +59,7 @@ export default function Login() {
                     <p>The wrong email and password is not in the system!</p>
                 </div>
                 )}
+                <button onClick={signInWithGoogle}>Sign in with Google</button>
             </form>
         </div>
     );

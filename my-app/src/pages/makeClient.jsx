@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 import './pages.css';
 
 function MakeClient() {
-    const { user } = useAuth();
+    const { user } = user.user_id;
 
     const [formData, setFormData] = useState({
         first_name: '',
