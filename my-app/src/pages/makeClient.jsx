@@ -269,7 +269,7 @@ function MakeClient() {
                                 {loading ? 'Registering...' : 'Register Client'}
                             </button>
                         </div>
-                    </motion.div>
+                    </motion.div>   
 
                     {success && <p>Client registered successfully!</p>}
                     {error && <p>Error: {error}</p>}

@@ -2,8 +2,10 @@ import { supabase } from "../supabaseClient";
 import { useState, useEffect } from "react";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion'
 import NavBar from '../components/NavBar';
+import Card from '../components/Card';
 
 function Dashboard() {
     const [count, setCount] = useState(0);
@@ -34,17 +36,17 @@ function Dashboard() {
             <NavBar></NavBar>
             <h1>Welcome to Your Dashboard!</h1>
               <div className="services-container">
-                <div className="box">
-                  <p>Active Clients</p>
-                  <p style={{paddingTop: '15px', fontSize:'24px'}}>{count}</p>
-                </div>
-              <div className="box">
-                <p>Services this Month</p>
-                <p style={{paddingTop: '15px', fontSize:'24px'}}>15</p>
-              </div>
-              <div className="box">
-                <p>Upcoming Appointments</p>
-              </div>
+              <NavLink to="/client/all" style={{textDecoration: 'none'}} onClick={() => setIsOpen(false)}>
+                <Card title="Active Clients" className="cols-1">
+                  <p><span className="label">{count}</span></p>
+                </Card>
+              </NavLink>
+              <Card title="Services this Month">
+                <p><span className="label">15</span></p>
+              </Card>
+              <Card title="Upcoming Appointments">
+                <p><span className="label">TBD</span></p>
+              </Card>
             </div>
           </motion.div>
     </div>
