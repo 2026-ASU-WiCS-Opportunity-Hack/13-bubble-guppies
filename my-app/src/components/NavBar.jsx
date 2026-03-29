@@ -2,6 +2,7 @@ import {Squash as Hamburger} from 'hamburger-react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Plus } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 // CSS
 import './NavBar.css';
@@ -52,9 +53,13 @@ function NavBar() {
       </div>
       {/* RIGHT BUTTON */ }
       <NavLink to="/client/new">
-        <button className="right_button">
-          <Plus size={32}/>
-        </button>
+        <motion.button className="right_button">
+          <motion.div
+            whileHover={{rotate:360, transition: {duration: 1}}}
+          >
+            <Plus size={40}/>
+          </motion.div>
+        </motion.button>
         
       </NavLink>
     </div>
