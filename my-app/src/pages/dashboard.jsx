@@ -5,27 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 
 function Dashboard() {
-    const [clients, setClients] = useState([])
-   
-    useEffect(() =>{
-        
-        async function getAllClients() {
-            const {data, error} = await supabase
-            .from('clients')
-            .select('first_name, last_name') 
-            if(error) {
-                
-                console.log(error)
-            }
-            else {   
-                setClients(data);
-                console.log(data);
-            }
-           
-        }
-        getAllClients();
-        }, [])
-
     
     return(
     <div className="container">

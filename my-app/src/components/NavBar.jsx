@@ -1,6 +1,8 @@
 import {Squash as Hamburger} from 'hamburger-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { supabase } from "../supabaseClient";
+import SearchResultsList from './SearchResultsList';
 
 // CSS
 import './NavBar.css';
@@ -8,17 +10,46 @@ import './NavBar.css';
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState("")
+  const [clients, setClients] = useState("")
+  const [isResultsVisible, setIsResultsVisible] = useState(false);
+
+  useEffect(() =>{
+          
+      async function getAllClients() {
+          const {data, error} = await supabase
+          .from('clients')
+          .select('first_name, last_name') 
+          .ilike('first_name', `%${search}%`)
+          if(error) {
+                  
+              console.log(error)
+          }
+              else {   
+                  setClients(data);
+                  console.log(data);
+              }
+             
+          }
+          getAllClients();
+          }, [search])
   return (
     <div className ="navBar">
       {/* SEARCH BAR */ }
-      <div className="searchbar">
-        <input
-          type="search"
-          placeholder="Search clients..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="search-input"
-          />
+      <div className = "search-container">
+        <div className="searchbar">
+          <input
+            type="search"
+            placeholder="Search clients..."
+            value={search}
+            onClick={() => {setIsResultsVisible(true)}}
+            onChange={(e) => setSearch(e.target.value)}
+            className="search-input"
+            />
+        </div>
+        <div className="search-results">
+          {isResultsVisible && (
+            <SearchResultsList results={clients}></SearchResultsList>)}
+        </div>
       </div>
       <div className="left_hamburger">
         {/* hamburger itself */}

@@ -1,16 +1,45 @@
-/* SEARCH BAR */
+/*
 .navBar {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40px;
+   
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 16px;
     background-color: white;
     z-index: 100;
+    
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+}*/
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);  /* ← centers it under the input */
+  width: 250px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.search-results {
+  position: absolute;
+  top: 100%;
+  width: 250px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
 .search-input::-webkit-search-cancel-button {
