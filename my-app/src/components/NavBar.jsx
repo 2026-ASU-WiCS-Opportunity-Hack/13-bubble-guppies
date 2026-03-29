@@ -1,6 +1,7 @@
 import {Squash as Hamburger} from 'hamburger-react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Plus } from 'lucide-react'
 
 // CSS
 import './NavBar.css';
@@ -49,6 +50,13 @@ function NavBar() {
           </nav>
         )}
       </div>
+      {/* RIGHT BUTTON */ }
+      <NavLink to="/client/new">
+        <button className="right_button">
+          <Plus size={32}/>
+        </button>
+        
+      </NavLink>
     </div>
   )
 }
