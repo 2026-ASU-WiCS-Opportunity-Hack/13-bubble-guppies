@@ -2,8 +2,11 @@ import { supabase } from "../supabaseClient";
 import { useEffect, useState } from "react";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+
+/* object / animation imports */
 import NavBar from '../components/NavBar';
 import { motion } from 'framer-motion'
+import Card from '../components/Card';
 import './pages.css';
 
 function MakeClient() {
@@ -95,9 +98,17 @@ function MakeClient() {
 
     return(
         <div className="makeClient">
+            <motion.div
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                transition={{duration:0.5}}
+            >
             <h2>Register New Client</h2>
             <form onSubmit={handleSubmit}>
-                <input
+                {/* PERSONAL INFO CARD */ } 
+                <Card title="Personal Information" className="cols-2">
+                    {/* FIRST ROW */ }
+                    <input
                     type="text"
                     name="first_name"
                     value={formData.first_name}
@@ -115,6 +126,7 @@ function MakeClient() {
                     required
                 />
 
+                {/* SECOND ROW */ }
                 <input
                     type="email"
                     name="email"
@@ -131,6 +143,8 @@ function MakeClient() {
                     placeholder="Phone"
                 />
 
+                {/* THIRD ROW */ }
+
                 <input
                     type="date"
                     name="date_of_birth"
@@ -141,13 +155,31 @@ function MakeClient() {
 
                 <input
                     type="text"
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    placeholder="Gender"
+                />
+
+                </Card>
+                
+                {/* ADDRESS CARD */ }
+
+                <Card title="Address">
+
+                {/* ROW 1 - 1 COL */ }
+                <div className="cols-1">
+                    <input
+                    type="text"
                     name="address"
                     value={formData.address}
                     onChange={handleChange}
                     placeholder="Address"
-                />
-
-                <input
+                    />
+                </div>
+                {/* ROW 2 - 3 COLS */ }
+                <div className="cols-3">
+                    <input
                     type="text"
                     name="city"
                     value={formData.city}
@@ -170,67 +202,77 @@ function MakeClient() {
                     onChange={handleChange}
                     placeholder="Zip Code"
                 />
+                </div>
 
-                <input
-                    type="text"
-                    name="gender"
-                    value={formData.gender}
-                    onChange={handleChange}
-                    placeholder="Gender"
-                />
+                </Card>
+                
+                {/* Background */ }
+                <Card title="Background" className="cols-2">
+                    <input
+                        type="text"
+                        name="ethnicity"
+                        value={formData.ethnicity}
+                        onChange={handleChange}
+                        placeholder="Ethnicity"
+                    />
 
-                <input
-                    type="text"
-                    name="ethnicity"
-                    value={formData.ethnicity}
-                    onChange={handleChange}
-                    placeholder="Ethnicity"
-                />
+                    <input
+                        type="text"
+                        name="primary_language"
+                        value={formData.primary_language}
+                        onChange={handleChange}
+                        placeholder="Primary Language"
+                    />
+                </Card>
+                
+                {/* DETAILS CARD */ }
+                <Card title="Details" className="cols-2">
+                    {/* FIRST ROW - 2 cols */ }
+                        <select
+                        name="priority"
+                        value={formData.priority}
+                        onChange={handleChange}
+                    >
+                        <option value="">Select Priority</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
 
-                <input
-                    type="text"
-                    name="primary_language"
-                    value={formData.primary_language}
-                    onChange={handleChange}
-                    placeholder="Primary Language"
-                />
-
-                <select
-                    name="priority"
-                    value={formData.priority}
-                    onChange={handleChange}
+                    <select
+                        name="case_manager"
+                        value={formData.case_manager}
+                        onChange={handleChange}
+                    >
+                        <option value="">Select Case Manager</option>
+                        {users.map(cm => (
+                            <option key={cm.id} value={cm.name}>{cm.name}</option>
+                        ))}
+                    </select>
+                {/* 2nd ROW - notes */ }
+                    <textarea
+                        name="notes"
+                        value={formData.notes}
+                        onChange={handleChange}
+                        placeholder="Additional Notes"
+                    />
+                </Card>
+                <motion.div
+                whileHover={{ scale : 1.05}}
+                transition={{ duration : 0.5, ease: "easeOut"}}
                 >
-                    <option value="">Select Priority</option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                </select>
-
-                <select
-                    name="case_manager"
-                    value={formData.case_manager}
-                    onChange={handleChange}
-                >
-                    <option value="">Select Case Manager</option>
-                    {users.map(cm => (
-                        <option key={cm.id} value={cm.name}>{cm.name}</option>
-                    ))}
-                </select>
-
-                <textarea
-                    name="notes"
-                    value={formData.notes}
-                    onChange={handleChange}
-                    placeholder="Additional Notes"
-                />
-                <button type="submit" disabled={loading}>
-                    {loading ? 'Registering...' : 'Register Client'}
-                </button>
+                    <div className="submit">
+                        <button type="submit" disabled={loading}>
+                            {loading ? 'Registering...' : 'Register Client'}
+                        </button>
+                    </div>
+                </motion.div>
 
                 {success && <p>Client registered successfully!</p>}
                 {error && <p>Error: {error}</p>}
             </form>
             <NavBar></NavBar>
+          </motion.div>
         </div>
     );
 }
