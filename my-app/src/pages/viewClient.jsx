@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import NavBar from '../components/NavBar';
+import { motion } from 'framer-motion'
 
 function ViewClient() {
     const { id } = useParams();

@@ -2,6 +2,7 @@ import { supabase } from "../supabaseClient";
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import { motion } from 'framer-motion'
 
 function AllClients() {
     const navigate = useNavigate();
@@ -26,11 +27,16 @@ function AllClients() {
 
     return(
         <div className="allClients">
-            <NavBar></NavBar>
-            <h1>Clients</h1>
-            <div style={{ overflowX: 'auto' }}>
-                <table>
-                    <thead>
+            <motion.div 
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+            transition={{duration:0.5}}
+            >   
+                <NavBar></NavBar>
+                <h1>Clients</h1>
+                <div style={{ overflowX: 'auto' }}>
+                    <table>
+                        <thead>
                         <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
@@ -56,7 +62,8 @@ function AllClients() {
                         ))}
                     </tbody>
                 </table>
-            </div>
+                </div>
+            </motion.div>
         </div>
     );
 }
